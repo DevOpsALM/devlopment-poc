@@ -1,0 +1,6 @@
+{
+  "alm-func-java-devlopmentpoc-dev": {
+    "resource_group": "rg-by-workflow-shared-dev-eus2-01",
+    "webapp_url": "https://alm-func-java-devlopmentpoc-dev.azurewebsites.net"
+  }
+}
