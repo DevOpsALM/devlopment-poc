@@ -23,7 +23,11 @@ jobs:
 
     - name: Delete Azure Web App
       run: |
-        az webapp delete --name $AZURE_WEB_APP_NAME --resource-group $AZURE_RESOURCE_GROUP
+        if [[ -n $(echo $(az webapp list --query "[?name=='$AZURE_WEB_APP_NAME']") | sed 's/\(\[\|\]\)//g') ]]; then
+          az webapp delete --name $AZURE_WEB_APP_NAME --resource-group $AZURE_RESOURCE_GROUP
+        else
+          echo "$AZURE_WEB_APP_NAME not found"
+          exit 1
 
     - name: Update Azure Web App Endpoints File
       run: |
